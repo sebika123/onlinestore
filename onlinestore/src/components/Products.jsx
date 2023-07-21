@@ -127,7 +127,7 @@ const filterProduct=(cat)=>{
 
 
                 <div>
-      <div>
+      <div className=" mb-5 pb-5 d-flex justify-content-center">
         {/* Search input field */}
         <input
           type="text"
