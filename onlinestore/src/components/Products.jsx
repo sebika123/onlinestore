@@ -2,12 +2,26 @@ import React, { useState, useEffect ,useRef} from 'react'
 import Skeleton from "react-loading-skeleton";
 import {Link } from "react-router-dom";
 
+import { addToCart } from "../redux/action";
+import { useDispatch } from "react-redux";
+
 const Products = () => {
     const [data, setData] = useState([]);
     const [filter, setFilter] = useState([]);
     const [loading, setLoading] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const componentMounted = useRef(true);
+
+
+
+    const dispatch = useDispatch();
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
+
+
+
 
     useEffect(() => {
       const getProducts = async () => {
@@ -87,6 +101,9 @@ const filterProduct=(cat)=>{
                     <button className="btn.btn-outline-dark me-2"onClick={()=>filterProduct("electronics")}>Electronics
                     </button>
 
+
+
+
                 </div>
                 {filter.map((product) => {
                     return (
@@ -99,6 +116,10 @@ const filterProduct=(cat)=>{
                                         <h5 class="card-title mb-0">{product.title.substring(0,12)}...</h5>
                                         <p class="card-text lead fw-bold">${product.price}</p>
                                         <Link to={`/products/${product.id}`} class="btn btn-outline-dark">Buy Now</Link>
+                                        <button onClick={() => handleAddToCart(product)}  class="btn btn-outline-dark" >Add to Cart</button>
+
+
+
                                     </div>
                                 </div>
                             </div>
