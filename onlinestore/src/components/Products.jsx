@@ -1,5 +1,5 @@
 import React, { useState, useEffect ,useRef} from 'react'
-import Skeleton from "react-loading-skeleton"; 
+import Skeleton from "react-loading-skeleton";
 import {Link } from "react-router-dom";
 
 const Products = () => {
@@ -8,22 +8,22 @@ const Products = () => {
     const [loading, setLoading] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const componentMounted = useRef(true);
-  
+
     useEffect(() => {
       const getProducts = async () => {
         setLoading(true);
         const response = await fetch('https://fakestoreapi.com/products');
         const products = await response.json();
-  
+
         if (componentMounted.current) {
           setData(products);
           setFilter(products);
           setLoading(false);
         }
       };
-  
+
       getProducts();
-  
+
       return () => {
         componentMounted.current = false;
       };
@@ -32,7 +32,7 @@ const Products = () => {
     const handleSearch = (e) => {
         const { value } = e.target;
         setSearchQuery(value);
-    
+
         const filteredProducts = data.filter((product) =>
           product.title.toLowerCase().includes(value.toLowerCase())
         );
@@ -104,16 +104,16 @@ const filterProduct=(cat)=>{
                             </div>
                         </>
                     );
-            
+
                 }
            ) }
-        
+
             </>
-        
+
 
 );
     };
-    
+
 
     return (
         <div>
