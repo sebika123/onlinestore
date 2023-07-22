@@ -1,8 +1,9 @@
-// Cart.js
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart } from "../redux/actions";
 
+
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeFromCart } from '../redux/action';
+import "../cart.css";
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const dispatch = useDispatch();

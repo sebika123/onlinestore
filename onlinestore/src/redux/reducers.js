@@ -1,4 +1,4 @@
-// reducers.js
+
 const initialState = {
     cartItems: [],
   };
